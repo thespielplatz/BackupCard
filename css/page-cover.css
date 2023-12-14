@@ -1,0 +1,37 @@
+.back-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.backup-cover-text {
+    font-size: 20pt;
+    color: #F0F0F0;
+    position: absolute;
+    top: 108mm;
+    left: 84mm;
+    z-index: 1;
+    transform: rotate(54deg);
+    text-align: center;
+}
+
+.backup-cover-text :first-child {
+    text-transform: uppercase;
+    font-family: monospace;
+    font-weight: bolder;
+}
+.backup-cover-text :nth-child(2) {
+    text-transform: uppercase;
+    font-family: monospace;
+    font-weight: bolder;
+    padding-top: 30mm;
+    margin-bottom: 0;
+}
+
+.backup-cover-text :nth-child(3) {
+    font-size: 10pt;
+    font-weight: bold;
+
+    color: #FFFFFF;
+    margin-top: 4mm;
+}

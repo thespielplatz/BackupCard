@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/paper.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/page-seed.css">
+    <link rel="stylesheet" href="css/page-cover.css">
     <script type="text/javascript" src="js/qrcode.min.js"></script>
+    <script type="module">import "/js/bitcoinjs-lib.js"</script>
+    <script type="module">import "/js/bip39.browser.js"</script>
+    <script type="module">import "/js/bip32.browser.js"</script>
+    <script type="text/javascript" src="/js/base58.browser.js"></script>
+    <script type="text/javascript" src="/js/ecc.browser.js"></script>
+    <script type="text/javascript" src="/js/buffer.browser.js"></script>
     <style>
         html {
             --main-light-color: #c9c9c9;
@@ -14,156 +22,15 @@
             --laminate-box-height: 190mm;
         }
 
-        h1  {
-            margin: 0;
-        }
-
-        .laminate-box {
-            width: calc(var(--laminate-box-width));
-            height: calc(var(--laminate-box-height));
-            border: 1px solid black;
-            display: inline-block;
-        }
-
-        .laminate-box .fold-line {
-            position: relative;
-            top: calc(var(--laminate-box-height) / 2);
-            left: 5mm;
-            height: 0;
-            width: var(--laminate-box-width);
-            border-bottom: 1px dashed var(--main-light-color);
-            margin-right: -5mm;
-            margin-left: -5mm;
-        }
-        .laminate-box .front, .laminate-box .back {
-            height: calc(var(--laminate-box-height) * 0.5 - 5mm);
-            padding-left: 5mm;
-            padding-right: 5mm;
-            padding-top: 5mm;
-        }
-
-        .laminate-box .front {
-            font-size: 8pt;
-        }
-
-        .laminate-box .back p {
-            font-size: 8pt;
-            text-align: center;
-        }
-
-        .laminate-box .link {
-            color: var(--headline-color);
-        }
-
-        .laminate-box h1 {
-            font-size: 14pt;
-
+        .tech-info {
             font-family: monospace;
-            color: var(--headline-color);
-            text-align: center;
-            text-transform: uppercase;
-
-            margin-left: -5mm;
-            margin-right: -5mm;
+            padding-bottom: 3mm;
         }
 
-        .laminate-box .line, .laminate-box .half-field  {
-            color: var(--main-light-color);
-            border-bottom: 1px solid var(--main-light-color);
+        .tech-info span {
+            font-size: 7pt;
+            word-break: break-all;
         }
-
-        .laminate-box .half-field .label {
-            font-size: 9pt;
-            width: 6mm;
-            display: inline-block;
-        }
-        .laminate-box .half-field .value {
-           color: black;
-            font-family: monospace;
-            font-weight: bold;
-        }
-        .laminate-box .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 5mm;
-            row-gap: 1mm;
-        }
-
-        .laminate-box .image-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            margin-left: 7mm;
-            margin-right: 7mm;
-        }
-
-        .laminate-box .image-grid img {
-            width: 6mm;
-            place-self: center;
-        }
-
-        .laminate-box .image-grid img {
-            background-size: 100% 100%;
-            background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 44%, darkred 45%, darkred 55%, rgba(0, 0, 0, 0) 56%) no-repeat 0 center;
-        }
-
-        .xprv-text {
-            font-family: monospace;
-            line-break: anywhere;
-            font-weight: bold;
-        }
-        .xprv-qr-code img {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-        }
-
-        .rotate {
-            -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-        }
-
-        .back-svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .backup-cover-text {
-            font-size: 20pt;
-            color: #F0F0F0;
-            position: absolute;
-            top: 108mm;
-            left: 84mm;
-            z-index: 1;
-            transform: rotate(54deg);
-            text-align: center;
-        }
-
-        .backup-cover-text :first-child {
-            text-transform: uppercase;
-            font-family: monospace;
-            font-weight: bolder;
-        }
-        .backup-cover-text :nth-child(2) {
-            text-transform: uppercase;
-            font-family: monospace;
-            font-weight: bolder;
-            padding-top: 30mm;
-            margin-bottom: 0;
-        }
-
-        .backup-cover-text :nth-child(3) {
-            font-size: 10pt;
-            font-weight: bold;
-
-            color: #FFFFFF;
-            margin-top: 4mm;
-        }
-
-        template {
-            display: none;
-        }
-
     </style>
     <title>Back Card Print Template</title>
   </head>
@@ -174,22 +41,20 @@
         <p>
           This tool is to create a backup card, where the important pieces can be laminated.
           </p>
-        <ul>
-          <li>
-            <strong>Info:</strong> Please a different tool for seed generation e.g. <a href="https://github.com/bitaps-com/mnemonic-offline-tool">Mnemonic Offline Tool</a>
-          </li>
-        </ul>
       </div>
       <div>
-        <strong>Seed</strong><br>
-        <textarea type="text" id="input-seed" rows="8" cols="30" style="font-weight: bold;">airport crime similar assault borrow awesome desert reason flavor nut scene proof manual want prize before wrap holiday wink verb melody stuff answer very</textarea>
+        <strong>BIP39 Mnemonic</strong><br>
+        <textarea type="text" id="mnemonic-input" rows="8" cols="30" style="font-weight: bold;">airport crime similar assault borrow awesome desert reason flavor nut scene proof manual want prize before wrap holiday wink verb melody stuff answer very</textarea>
       </div>
+      <div id="mnemonic-info"></div>
     </div>
 
     <section class="sheet padding-10mm">
-      <h1>Page1: Seed</h1>
-      <p>Please generate a seed in an secure offline environment.</p>
-      <p>The idea is to cut, fold and lamiate the seed.</p>
+      <h1>Page1: BIP39 Mnemonic</h1>
+      <p>Please generate a BIP39 Mnemonic seed in an secure offline environment.</p>
+      <p>E.g. <a href="https://github.com/bitaps-com/mnemonic-offline-tool">Mnemonic Offline Tool</a></p>
+      <p>E.g. <a href="https://github.com/iancoleman/bip39/blob/master/readme.md#standalone-offline-version">Iancoleman BIP39</a></p>
+      <p>The idea is to cut, fold and lamiate the Mnemonic page. Page 2 has the cover for page 1.</p>
 
       <div class="laminate-box">
         <div class="fold-line"></div>
@@ -202,7 +67,7 @@
           <div style="height: 3mm;"></div>
           <div class="line">Optional Passphrase</div>
         </div>
-        <div class="back rotate">
+        <div class="back rotate180">
           <h1>Restore</h1>
           <p>The 24 words written on this card are the backup of a bitcoin wallet.</p>
           <p>This information is highly confidential.</p>
@@ -237,7 +102,7 @@
           <div style="height:1.5mm;"></div>
           <div class="half-field"><span class="label" style="width: revert;">BIP32 Extended Private Key</span></div>
         </div>
-        <div class="back rotate">
+        <div class="back rotate180">
           Copy from other box
         </div>
       </div>
@@ -262,6 +127,18 @@
 
         </g>
       </svg>
+    </section>
+
+    <section class="sheet padding-10mm">
+      <h1>Page3: Extended Public Key - Read Only Zugriff</h1>
+      <p>The following data is not security-critical. However, it allows for the identification of all Bitcoin addresses associated with the wallet, determining the current balance of the wallet, and viewing all transactions conducted so far.</p>
+      <p>The <i>Extended Public Key</i> can be used with compatible wallets to obtain a read-only live view of the wallet and to determine (new) addresses in case further deposits are to be made to this wallet.</p>
+      <p>The <i>Extended Public Key</i> should, therefore, be kept <strong>confidential</strong>.</p>
+      <h2>Account 0 - Extended Public Key</h2>
+      <div class="tech-info"><strong>Path:</strong> m/84'/0'/0'</div>
+      <div class="tech-info"><strong>XPUB:</strong> <span id="acount0xpub"></span></div>
+      <div class="tech-info"><strong>ZPUB:</strong> <span id="acount0zpub"></span></div>
+      <div id="zpub-qrcode"></div>
     </section>
 
     <template id="template-seed-field">

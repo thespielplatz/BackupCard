@@ -12,6 +12,11 @@ html {
     font-family: system-ui;
 }
 
+
+h1  {
+    margin: 0;
+}
+
 .sheet-centering {
     display: flex;
     justify-content: center;
@@ -20,4 +25,13 @@ html {
 
 .hide {
     display: none !important;
+}
+
+.rotate180 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+template {
+    display: none;
 }

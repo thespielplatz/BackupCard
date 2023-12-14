@@ -9,3 +9,17 @@
 - [ ] Page 2: Foldable thingy like BitBox02 Backup Card, just that cutted and laminated Page 1 fits into this
 - [ ] Page 3: Acount 0 XPUB with QR Code and Joe Text
 - [ ] Page 4 till X: Addresses incl. QR Code
+
+###  Docs
+```bash
+# Generate bitcoinjs-lib.js
+npx browserify --standalone bitcoin - -o js/bitcoinjs-lib.js <<<"module.exports = require('bitcoinjs-lib');"
+
+# Generate libs
+npx browserify -r bip39 -s bip39 > js/bip39.browser.js  
+npx browserify -r bip32 -s bip32 > js/bip32.browser.js
+npx browserify -r tiny-secp256k1 -s tiny-secp256k1 > js/tiny-secp256k1.browser.js
+npx browserify -r bs58check -s base58 > js/base58.browser.js  
+npx browserify --standalone Buffer - -o js/buffer.browser.js <<<"module.exports = require('buffer').Buffer;"
+
+```

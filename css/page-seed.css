@@ -1,0 +1,99 @@
+
+.laminate-box {
+    width: calc(var(--laminate-box-width));
+    height: calc(var(--laminate-box-height));
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.laminate-box .fold-line {
+    position: relative;
+    top: calc(var(--laminate-box-height) / 2);
+    left: 5mm;
+    height: 0;
+    width: var(--laminate-box-width);
+    border-bottom: 1px dashed var(--main-light-color);
+    margin-right: -5mm;
+    margin-left: -5mm;
+}
+.laminate-box .front, .laminate-box .back {
+    height: calc(var(--laminate-box-height) * 0.5 - 5mm);
+    padding-left: 5mm;
+    padding-right: 5mm;
+    padding-top: 5mm;
+}
+
+.laminate-box .front {
+    font-size: 8pt;
+}
+
+.laminate-box .back p {
+    font-size: 8pt;
+    text-align: center;
+}
+
+.laminate-box .link {
+    color: var(--headline-color);
+}
+
+.laminate-box h1 {
+    font-size: 14pt;
+
+    font-family: monospace;
+    color: var(--headline-color);
+    text-align: center;
+    text-transform: uppercase;
+
+    margin-left: -5mm;
+    margin-right: -5mm;
+}
+
+.laminate-box .line, .laminate-box .half-field  {
+    color: var(--main-light-color);
+    border-bottom: 1px solid var(--main-light-color);
+}
+
+.laminate-box .half-field .label {
+    font-size: 9pt;
+    width: 6mm;
+    display: inline-block;
+}
+.laminate-box .half-field .value {
+    color: black;
+    font-family: monospace;
+    font-weight: bold;
+}
+.laminate-box .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5mm;
+    row-gap: 1mm;
+}
+
+.laminate-box .image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 7mm;
+    margin-right: 7mm;
+}
+
+.laminate-box .image-grid img {
+    width: 6mm;
+    place-self: center;
+}
+
+.laminate-box .image-grid img {
+    background-size: 100% 100%;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 44%, darkred 45%, darkred 55%, rgba(0, 0, 0, 0) 56%) no-repeat 0 center;
+}
+
+.xprv-text {
+    font-family: monospace;
+    line-break: anywhere;
+    font-weight: bold;
+}
+.xprv-qr-code img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
