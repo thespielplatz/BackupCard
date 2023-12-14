@@ -1,0 +1,23 @@
+@page {
+    size: A4;
+}
+
+@media print {
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+
+html {
+    font-family: system-ui;
+}
+
+.sheet-centering {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.hide {
+    display: none !important;
+}

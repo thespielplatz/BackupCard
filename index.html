@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/paper.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/qrcode.min.js"></script>
+    <style>
+        html {
+            --main-light-color: #c9c9c9;
+            --headline-color: #6B3D91;
+            --laminate-box-width: 70mm;
+            --laminate-box-height: 190mm;
+        }
+
+        .laminate-box {
+            width: calc(var(--laminate-box-width));
+            height: calc(var(--laminate-box-height));
+            border: 1px solid black;
+            display: inline-block;
+        }
+
+        .laminate-box .front, .laminate-box .back {
+            height: calc(var(--laminate-box-height) * 0.5);
+            padding-left: 5mm;
+            padding-right: 5mm;
+        }
+
+        .laminate-box .front {
+            font-size: 10pt;
+        }
+
+        .laminate-box .back p {
+            font-size: 8pt;
+            text-align: center;
+        }
+
+        .laminate-box .link {
+            color: var(--headline-color);
+        }
+
+        .laminate-box h1 {
+            font-family: monospace;
+            color: var(--headline-color);
+            text-align: center;
+            text-transform: uppercase;
+
+            margin-left: -5mm;
+            margin-right: -5mm;
+        }
+
+        .laminate-box .line, .laminate-box .half-field  {
+            color: var(--main-light-color);
+            border-bottom: 1px solid var(--main-light-color);
+        }
+
+        .laminate-box .half-field .label {
+            font-size: 10pt;
+            width: 6mm;
+            display: inline-block;
+        }
+        .laminate-box .half-field .value {
+           color: black;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .laminate-box .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 5mm;
+            row-gap: 1mm;
+        }
+        .laminate-box .fold-line {
+            position: relative;
+            top: calc(var(--laminate-box-height) / 2);
+            left: 0;
+            height: 0;
+            width: var(--laminate-box-width);
+            border-bottom: 1px dashed var(--main-light-color);
+            margin-right: -5mm;
+            margin-left: -5mm;
+        }
+
+        .laminate-box .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            margin-left: 7mm;
+            margin-right: 7mm;
+        }
+
+        .laminate-box .image-grid img {
+            width: 6mm;
+            place-self: center;
+        }
+        .xprv-text {
+            font-family: monospace;
+            line-break: anywhere;
+            font-weight: bold;
+        }
+        .xprv-qr-code img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+        }
+
+        .rotate {
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        template {
+            display: none;
+        }
+
+    </style>
+    <title>Back Card Print Template</title>
+  </head>
+  <body id="theBody" class="A4">
+    <div class="no-print" style="position: fixed; top: 60px; left: 29px; border: 0; width: 250px;">
+      <h2>Back Card Print Template</h2>
+      <div>
+        <p>
+          This tool is to create a backup card, where the important pieces can be laminated.
+          </p>
+        <ul>
+          <li>
+            <strong>Info:</strong> Please a different tool for seed generation e.g. <a href="https://github.com/bitaps-com/mnemonic-offline-tool">Mnemonic Offline Tool</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <strong>Seed</strong><br>
+        <textarea type="text" id="input-seed" rows="8" cols="30" style="font-weight: bold;">airport crime similar assault borrow awesome desert reason flavor nut scene proof manual want prize before wrap holiday wink verb melody stuff answer very</textarea>
+      </div>
+    </div>
+
+    <section class="sheet padding-10mm">
+      <h1>Page1: Seed</h1>
+      <p>Please generate a seed in an secure offline environment.</p>
+      <p>The idea is to cut, fold and lamiate the seed.</p>
+
+      <div class="laminate-box">
+        <div class="front">
+          <div class="fold-line"></div>
+          <h1>Recovery Words</h1>
+          <div class="line">Wallet Name</div>
+          <div style="height: 5mm;"></div>
+          <div class="grid" id="seed-grid">
+          </div>
+        </div>
+        <div class="back rotate">
+          <h1>Restore</h1>
+          <p>The 24 words written on this card are the backup of a bitcoin wallet.</p>
+          <p>This information is highly confidential.</p>
+          <p>Anyone who knows these recovery words
+            has full control over all the funds
+            secured with this wallet.</p>
+          <p>Do not enter it on a computer and never print, copy or store it in digital form.</p>
+          <div class="image-grid">
+            <img src="res/camera.png">
+            <img src="res/printer.png">
+            <img src="res/computer.png">
+            <img src="res/server.png">
+          </div>
+          <p>To restore access to the funds secured by these recovery words, use a hardware wallet like the BitBox02.</p>
+          <p>If an optional passphrase is given, enter it on the hardware wallet as well.</p>
+          <p>Need help?<p>
+          <p class="link">https://bitbox.swiss/back</p>
+        </div>
+      </div>
+
+      <div class="laminate-box hide">
+        <div class="front">
+          <div class="fold-line"></div>
+          <h1>Account Extended Private Key</h1>
+          <div class="line">Account Name</div>
+          <div style="height:3mm;"></div>
+          <div class="half-field"><span class="label" style="width: 10mm;">Path</span><span class="value">m/84'/0'/0'</span></div>
+          <div style="height:3mm;"></div>
+          <div class="xprv-text" id="xprv-text">zprvAfcFwXSMcdJZ8S7L2PwHaTaNbkugAi4yrnbkY7KeB7jnY245n35MSB1nxAbGXwdMXokUU1TKvkESwPwxBpqNMmrJEPeVn42VZEopVJ7QtC3</div>
+          <div style="height:1.5mm;"></div>
+          <div id="xprv-qr-code" class="xprv-qr-code"></div>
+          <div style="height:1.5mm;"></div>
+          <div class="half-field"><span class="label" style="width: revert;">BIP32 Extended Private Key</span></div>
+        </div>
+        <div class="back rotate">
+          Copy from other box
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet padding-10mm">
+      <h1>Page2: Cover Sheet</h1>
+    </section>
+
+    <template id="template-seed-field">
+      <div class="half-field"><span class="label"></span><span class="value"></span></div>
+    </template>
+
+    <script type="text/javascript" src="js/main.js"></script>
+  </body>
+</html>
