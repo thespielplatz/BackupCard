@@ -1,3 +1,7 @@
+### Print sizes
+- Seed Sheet: 70mm x 95mm
+- Seed Sheet Laminated: 80mm x 105mm
+
 ### Todos
 
 - [ ] Page 1: SeedWords with foldable back (quasi "Recovery Words" und "Restore" von BitBox02 Back card template) fürs laminieren

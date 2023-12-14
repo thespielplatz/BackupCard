@@ -14,6 +14,10 @@
             --laminate-box-height: 190mm;
         }
 
+        h1  {
+            margin: 0;
+        }
+
         .laminate-box {
             width: calc(var(--laminate-box-width));
             height: calc(var(--laminate-box-height));
@@ -21,14 +25,25 @@
             display: inline-block;
         }
 
+        .laminate-box .fold-line {
+            position: relative;
+            top: calc(var(--laminate-box-height) / 2);
+            left: 5mm;
+            height: 0;
+            width: var(--laminate-box-width);
+            border-bottom: 1px dashed var(--main-light-color);
+            margin-right: -5mm;
+            margin-left: -5mm;
+        }
         .laminate-box .front, .laminate-box .back {
-            height: calc(var(--laminate-box-height) * 0.5);
+            height: calc(var(--laminate-box-height) * 0.5 - 5mm);
             padding-left: 5mm;
             padding-right: 5mm;
+            padding-top: 5mm;
         }
 
         .laminate-box .front {
-            font-size: 10pt;
+            font-size: 8pt;
         }
 
         .laminate-box .back p {
@@ -41,6 +56,8 @@
         }
 
         .laminate-box h1 {
+            font-size: 14pt;
+
             font-family: monospace;
             color: var(--headline-color);
             text-align: center;
@@ -56,7 +73,7 @@
         }
 
         .laminate-box .half-field .label {
-            font-size: 10pt;
+            font-size: 9pt;
             width: 6mm;
             display: inline-block;
         }
@@ -71,16 +88,6 @@
             column-gap: 5mm;
             row-gap: 1mm;
         }
-        .laminate-box .fold-line {
-            position: relative;
-            top: calc(var(--laminate-box-height) / 2);
-            left: 0;
-            height: 0;
-            width: var(--laminate-box-width);
-            border-bottom: 1px dashed var(--main-light-color);
-            margin-right: -5mm;
-            margin-left: -5mm;
-        }
 
         .laminate-box .image-grid {
             display: grid;
@@ -93,6 +100,12 @@
             width: 6mm;
             place-self: center;
         }
+
+        .laminate-box .image-grid img {
+            background-size: 100% 100%;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 44%, darkred 45%, darkred 55%, rgba(0, 0, 0, 0) 56%) no-repeat 0 center;
+        }
+
         .xprv-text {
             font-family: monospace;
             line-break: anywhere;
@@ -107,6 +120,44 @@
         .rotate {
             -webkit-transform: rotate(180deg);
             transform: rotate(180deg);
+        }
+
+        .back-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .backup-cover-text {
+            font-size: 20pt;
+            color: #F0F0F0;
+            position: absolute;
+            top: 108mm;
+            left: 84mm;
+            z-index: 1;
+            transform: rotate(54deg);
+            text-align: center;
+        }
+
+        .backup-cover-text :first-child {
+            text-transform: uppercase;
+            font-family: monospace;
+            font-weight: bolder;
+        }
+        .backup-cover-text :nth-child(2) {
+            text-transform: uppercase;
+            font-family: monospace;
+            font-weight: bolder;
+            padding-top: 30mm;
+            margin-bottom: 0;
+        }
+
+        .backup-cover-text :nth-child(3) {
+            font-size: 10pt;
+            font-weight: bold;
+
+            color: #FFFFFF;
+            margin-top: 4mm;
         }
 
         template {
@@ -141,13 +192,15 @@
       <p>The idea is to cut, fold and lamiate the seed.</p>
 
       <div class="laminate-box">
+        <div class="fold-line"></div>
         <div class="front">
-          <div class="fold-line"></div>
           <h1>Recovery Words</h1>
+          <div style="height: 5mm;"></div>
           <div class="line">Wallet Name</div>
           <div style="height: 5mm;"></div>
-          <div class="grid" id="seed-grid">
-          </div>
+          <div class="grid" id="seed-grid"></div>
+          <div style="height: 3mm;"></div>
+          <div class="line">Optional Passphrase</div>
         </div>
         <div class="back rotate">
           <h1>Restore</h1>
@@ -192,6 +245,23 @@
 
     <section class="sheet padding-10mm">
       <h1>Page2: Cover Sheet</h1>
+      <p>This is the cover for the laminated seed sheet. Cut it and fold it along the white lines and wrap the seed sheet inside.</p>
+      <div class="backup-cover-text">
+        <p>Backup Card</p>
+        <p>Confidential</p>
+        <p>keep this document safe</p>
+      </div>
+      <svg class="back-svg" viewBox="0 0 595.28 841.89" width="210mm" height="296.998mm" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <g fill="#18002f" stroke="#FFFFFF" stroke-width="2.0" stroke-color-name="Cut">
+            <path id="envelope-cut-outside" d="M 247.98 600.44 L 282.34 645.53 L 467.27 645.53 A 2.83 2.83 0 0 0 470.0 643.45 L 519.09 465.15 L 484.73 420.06 L 533.4 243.26 A 2.83 2.83 0 0 0 530.67 239.67 L 347.3 239.67 L 312.94 194.58 L 128.01 194.58 A 2.83 2.83 0 0 0 125.27 196.66 L 76.19 374.96 L 110.55 420.06 L 61.87 596.85 A 2.83 2.83 0 0 0 64.61 600.44 L 247.98 600.44"/>
+          </g>
+          <g fill="#18002f" stroke="#FFFFFF" stroke-width="0.75" stroke-color-name="Crease">
+            <path id="envelope-fold-inside" d="M 247.98 600.44 L 484.73 420.06 L 347.3 239.67 L 110.55 420.06 L 247.98 600.44"/>
+          </g>
+
+        </g>
+      </svg>
     </section>
 
     <template id="template-seed-field">
