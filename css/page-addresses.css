@@ -1,0 +1,29 @@
+.address-box {
+    border: 2px solid #c7c7c7;
+}
+
+.address-grid {
+    padding-top: 5mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5mm;
+    row-gap: 1mm;
+}
+
+.address-qrcode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.address-title, .address-bc1 {
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+    padding-top: 2mm;
+    padding-bottom: 2mm;
+}
+
+.address-title {
+    font-size: 12pt;
+}

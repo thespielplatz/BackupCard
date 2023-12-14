@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/page-seed.css">
     <link rel="stylesheet" href="css/page-cover.css">
+    <link rel="stylesheet" href="css/page-account0.css">
+    <link rel="stylesheet" href="css/page-addresses.css">
     <script type="text/javascript" src="js/qrcode.min.js"></script>
     <script type="module">import "/js/bitcoinjs-lib.js"</script>
     <script type="module">import "/js/bip39.browser.js"</script>
@@ -21,16 +23,6 @@
             --laminate-box-width: 70mm;
             --laminate-box-height: 190mm;
         }
-
-        .tech-info {
-            font-family: monospace;
-            padding-bottom: 3mm;
-        }
-
-        .tech-info span {
-            font-size: 7pt;
-            word-break: break-all;
-        }
     </style>
     <title>Back Card Print Template</title>
   </head>
@@ -44,13 +36,14 @@
       </div>
       <div>
         <strong>BIP39 Mnemonic</strong><br>
-        <textarea type="text" id="mnemonic-input" rows="8" cols="30" style="font-weight: bold;">airport crime similar assault borrow awesome desert reason flavor nut scene proof manual want prize before wrap holiday wink verb melody stuff answer very</textarea>
+        <textarea type="text" id="mnemonic-input" rows="8" cols="30" style="font-weight: bold;"></textarea>
       </div>
       <div id="mnemonic-info"></div>
+      <button type="button" id="btnAddAddressPage">Add Address Page</button>
     </div>
 
     <section class="sheet padding-10mm">
-      <h1>Page1: BIP39 Mnemonic</h1>
+      <h1>BIP39 Mnemonic</h1>
       <p>Please generate a BIP39 Mnemonic seed in an secure offline environment.</p>
       <p>E.g. <a href="https://github.com/bitaps-com/mnemonic-offline-tool">Mnemonic Offline Tool</a></p>
       <p>E.g. <a href="https://github.com/iancoleman/bip39/blob/master/readme.md#standalone-offline-version">Iancoleman BIP39</a></p>
@@ -109,7 +102,7 @@
     </section>
 
     <section class="sheet padding-10mm">
-      <h1>Page2: Cover Sheet</h1>
+      <h1>Cover Sheet</h1>
       <p>This is the cover for the laminated seed sheet. Cut it and fold it along the white lines and wrap the seed sheet inside.</p>
       <div class="backup-cover-text">
         <p>Backup Card</p>
@@ -130,7 +123,7 @@
     </section>
 
     <section class="sheet padding-10mm">
-      <h1>Page3: Extended Public Key - Read Only Zugriff</h1>
+      <h1>Extended Public Key - Read Only Zugriff</h1>
       <p>The following data is not security-critical. However, it allows for the identification of all Bitcoin addresses associated with the wallet, determining the current balance of the wallet, and viewing all transactions conducted so far.</p>
       <p>The <i>Extended Public Key</i> can be used with compatible wallets to obtain a read-only live view of the wallet and to determine (new) addresses in case further deposits are to be made to this wallet.</p>
       <p>The <i>Extended Public Key</i> should, therefore, be kept <strong>confidential</strong>.</p>
@@ -140,6 +133,21 @@
       <div class="tech-info"><strong>ZPUB:</strong> <span id="acount0zpub"></span></div>
       <div id="zpub-qrcode"></div>
     </section>
+
+    <template id="template-address-sheet">
+      <!-- <section class="sheet padding-10mm"> -->
+        <h1></h1>
+        <div class="address-grid">
+        </div>
+    </template>
+
+    <template id="template-address-box">
+      <div class="address-box">
+        <div class="address-title">Address Path <span>`m/84'/0'/0'/0/0`</span></div>
+        <div class="address-qrcode"></div>
+        <div class="address-bc1"></div>
+      </div>
+    </template>
 
     <template id="template-seed-field">
       <div class="half-field"><span class="label"></span><span class="value"></span></div>

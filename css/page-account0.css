@@ -1,0 +1,9 @@
+.tech-info {
+    font-family: monospace;
+    padding-bottom: 3mm;
+}
+
+.tech-info span {
+    font-size: 7pt;
+    word-break: break-all;
+}
