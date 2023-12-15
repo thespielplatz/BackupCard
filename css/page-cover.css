@@ -8,8 +8,8 @@
     font-size: 20pt;
     color: #F0F0F0;
     position: absolute;
-    top: 108mm;
-    left: 84mm;
+    top: 106mm;
+    left: 78mm;
     z-index: 1;
     transform: rotate(54deg);
     text-align: center;
@@ -20,15 +20,26 @@
     font-family: monospace;
     font-weight: bolder;
 }
-.backup-cover-text :nth-child(2) {
-    text-transform: uppercase;
-    font-family: monospace;
-    font-weight: bolder;
-    padding-top: 30mm;
-    margin-bottom: 0;
+
+.backup-cover-text .wallet {
+    margin-top: 10mm;
+    background: #ababab;
+    width: 60mm;
+    height: 10mm;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #FFFFFF;
 }
 
 .backup-cover-text :nth-child(3) {
+    text-transform: uppercase;
+    font-family: monospace;
+    font-weight: bolder;
+    padding-top: 20mm;
+    margin-bottom: 0;
+}
+
+.backup-cover-text :nth-child(4) {
     font-size: 10pt;
     font-weight: bold;
 

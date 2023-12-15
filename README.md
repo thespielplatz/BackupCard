@@ -8,6 +8,8 @@
 - [x] Page 2: Foldable thingy like BitBox02 Backup Card, just that cutted and laminated Page 1 fits into this
 - [x] Page 3: Acount 0 XPUB with QR Code and Joe Text
 - [x] Page 4 till X: Addresses incl. QR Code
+- [x] Backup Name on Envelope
+- [ ] Add dynamic Backname Input field
 - [ ] Loading indicater when stuff is calculated
 - [ ] Toggle for either Seed or Account
 
