@@ -9,11 +9,21 @@
 - [x] Page 3: Acount 0 XPUB with QR Code and Joe Text
 - [x] Page 4 till X: Addresses incl. QR Code
 - [x] Backup Name on Envelope
-- [ ] Add dynamic Backname Input field
 - [ ] Loading indicater when stuff is calculated
+- [ ] Some build one file
+- [ ] Add dynamic Backname Input field
 - [ ] Toggle for either Seed or Account
 
+
 ###  Docs
+If you have a file:// cors problem --> use e.g. python as webserver
+```bash
+python3 -m http.server 8000
+# or
+python -m http.server 8000
+```
+
+
 ```bash
 # Generate bitcoinjs-lib.js
 npx browserify --standalone bitcoin - -o js/bitcoinjs-lib.js <<<"module.exports = require('bitcoinjs-lib');"
