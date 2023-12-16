@@ -27,6 +27,10 @@ h1  {
     display: none !important;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .rotate180 {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
@@ -34,4 +38,27 @@ h1  {
 
 template {
     display: none;
+}
+
+@-moz-keyframes spin {
+    100% { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
+
+#loading {
+    background-image: url('/res/loading.png');
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    animation:spin 1.5s ease-in-out infinite;
+    margin-left: 8px;
 }

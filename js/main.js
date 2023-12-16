@@ -4,6 +4,7 @@ const seedFieldTemplate = document.getElementById('template-seed-field').innerHT
 const addressBoxTemplate = document.getElementById('template-address-box').innerHTML
 const addressSheetTemplate = document.getElementById('template-address-sheet').innerHTML
 
+const loadingIndicator = document.getElementById('loading')
 const seedGrid = document.getElementById('seed-grid')
 const mnemonicInfo = document.getElementById('mnemonic-info')
 const mnemonicInput = document.getElementById('mnemonic-input')
@@ -17,6 +18,16 @@ const zpubQRCode = new QRCode(document.getElementById('zpub-qrcode'), {
   colorLight: '#FFFFFF',
   correctLevel : QRCode.CorrectLevel.H,
 })
+
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+const hide = (element) => {
+  element.className += 'hidden'
+}
+
+const show = (element) => {
+  element.className = element.className.split(' ').filter((className => className != 'hidden')).join(' ')
+}
 
 zpubQRCode.clear()
 
@@ -91,7 +102,7 @@ const createAddressPage = () => {
   return addressPage
 }
 
-const mnemonicChanged = async () => {
+const mnemonicChanged = async (mnemonic) => {
   acount0xpubField.innerText = ''
   acount0zpubField.innerText = ''
   zpubQRCode.makeCode('notvalid')
@@ -102,8 +113,6 @@ const mnemonicChanged = async () => {
     element.remove()
   })
 
-  const mnemonic = mnemonicInput.value
-
   const valid = bip39lib.validateMnemonic(mnemonic)
   mnemonicInfo.innerText = `${valid ? '✅ Valid' : '🚨 Not Valid'} BIP39 Mnemonic`
 
@@ -113,7 +122,9 @@ const mnemonicChanged = async () => {
     wordFields[i].innerText = (i < words.length ? words[i] : '')
   }
 
-  if (!valid) return
+  if (!valid) {
+    return
+  }
 
   const bip39Seed = await bip39lib.mnemonicToSeed(mnemonic)
   const bip39HEX = bip39Seed.toString('hex')
@@ -176,8 +187,35 @@ const addAddressPage = () => {
   }
 }
 
-mnemonicInput.addEventListener('keyup', mnemonicChanged)
-document.getElementById('btnAddAddressPage').addEventListener('click', addAddressPage)
+const EMPTY_STRING = ''
+let currentMnemonic = EMPTY_STRING
+mnemonicInput.addEventListener('keyup',  async () => {
+  if (currentMnemonic !== EMPTY_STRING) {
+    if (currentMnemonic === mnemonicInput.value) {
+      return
+    }
+  }
+
+  while (currentMnemonic !== EMPTY_STRING) {
+    await wait(100)
+  }
+
+  currentMnemonic = mnemonicInput.value
+
+  show(loadingIndicator)
+  await wait(10)
+  await mnemonicChanged(currentMnemonic)
+  hide(loadingIndicator)
+
+  currentMnemonic = EMPTY_STRING
+})
+document.getElementById('btnAddAddressPage').addEventListener('click', () => {
+  show(loadingIndicator)
+  addAddressPage()
+  hide(loadingIndicator)
+})
+
+hide(loadingIndicator)
 
 window.onload = () => {
 }
