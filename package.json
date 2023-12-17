@@ -2,9 +2,9 @@
   "name": "backupcard",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "http-server",
+    "build": "inline-source-cli --compress false --root ./ index.html"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,8 @@
     "bs58check": "^3.0.1",
     "buffer": "^6.0.3",
     "ecpair": "^2.1.0",
+    "http-server": "^14.1.1",
+    "inline-source": "^8.0.3",
     "tiny-secp256k1": "^2.2.3"
   }
 }

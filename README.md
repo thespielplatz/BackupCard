@@ -5,7 +5,7 @@
 ### Backlog
 
 - [ ] Some build one file
-- [ ] Add dynamic Backname Input field
+- [ ] Optional Passphrase
 - [ ] Toggle for either Seed or Account
 - 
 #### Done
@@ -15,8 +15,11 @@
 - [x] Page 4 till X: Addresses incl. QR Code
 - [x] Backup Name on Envelope
 - [x] Loading indicater when stuff is calculated
+- [x] Add dynamic Backname Input field
 
 ###  Docs & Hints
+
+
 If you have a file:// cors problem --> use e.g. python as webserver
 ```bash
 python3 -m http.server 8000

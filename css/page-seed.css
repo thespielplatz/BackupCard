@@ -48,6 +48,12 @@
     margin-right: -5mm;
 }
 
+.laminate-box .wallet-name {
+    color: black;
+    font-family: monospace;
+    font-weight: bold;
+}
+
 .laminate-box .line, .laminate-box .half-field  {
     color: var(--main-light-color);
     border-bottom: 1px solid var(--main-light-color);
@@ -58,11 +64,13 @@
     width: 6mm;
     display: inline-block;
 }
+
 .laminate-box .half-field .value {
     color: black;
     font-family: monospace;
     font-weight: bold;
 }
+
 .laminate-box .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

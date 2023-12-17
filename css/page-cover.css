@@ -8,7 +8,7 @@
     font-size: 20pt;
     color: #F0F0F0;
     position: absolute;
-    top: 106mm;
+    top: 102mm;
     left: 78mm;
     z-index: 1;
     transform: rotate(54deg);
@@ -23,12 +23,19 @@
 
 .backup-cover-text .wallet {
     margin-top: 10mm;
+    font-size: 10pt;
+}
+
+.backup-cover-text .wallet-name {
+    margin-top: 1mm;
+    font-family: monospace;
     background: #ababab;
     width: 60mm;
     height: 10mm;
-    font-size: 10pt;
+    font-size: 12pt;
     font-weight: bold;
     color: #FFFFFF;
+    line-height: 10mm;
 }
 
 .backup-cover-text :nth-child(3) {

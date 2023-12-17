@@ -13,9 +13,9 @@
     <script type="module">import "/js/bitcoinjs-lib.js"</script>
     <script type="module">import "/js/bip39.browser.js"</script>
     <script type="module">import "/js/bip32.browser.js"</script>
-    <script type="text/javascript" src="/js/base58.browser.js"></script>
-    <script type="text/javascript" src="/js/ecc.browser.js"></script>
-    <script type="text/javascript" src="/js/buffer.browser.js"></script>
+    <script type="text/javascript" src="./js/base58.browser.js"></script>
+    <script type="text/javascript" src="./js/ecc.browser.js"></script>
+    <script type="text/javascript" src="./js/buffer.browser.js"></script>
     <style>
         html {
             --main-light-color: #c9c9c9;
@@ -23,7 +23,6 @@
             --laminate-box-width: 70mm;
             --laminate-box-height: 190mm;
         }
-
     </style>
     <title>Back Card Print</title>
   </head>
@@ -34,6 +33,10 @@
         <p>
           This tool is to create a backup card, where the important pieces can be laminated.
           </p>
+      </div>
+      <div>
+        <strong>Wallet Name</strong><br>
+        <input type="text" id="wallet-name-input" style="font-weight: bold;">
       </div>
       <div>
         <strong>BIP39 Mnemonic</strong><br>
@@ -55,11 +58,13 @@
         <div class="front">
           <h1>Recovery Words</h1>
           <div style="height: 5mm;"></div>
-          <div class="line">Wallet Name</div>
+          <div class="line">Wallet Name
+            <span class="wallet-name" id="wallet-name-card"></span>
+          </div>
           <div style="height: 5mm;"></div>
           <div class="grid" id="seed-grid"></div>
           <div style="height: 3mm;"></div>
-          <div class="line">Optional Passphrase</div>
+          <div class="line hide">Optional Passphrase</div>
         </div>
         <div class="back rotate180">
           <h1>Restore</h1>
@@ -81,25 +86,6 @@
           <p class="link">https://bitbox.swiss/back</p>
         </div>
       </div>
-
-      <div class="laminate-box hide">
-        <div class="front">
-          <div class="fold-line"></div>
-          <h1>Account Extended Private Key</h1>
-          <div class="line">Account Name</div>
-          <div style="height:3mm;"></div>
-          <div class="half-field"><span class="label" style="width: 10mm;">Path</span><span class="value">m/84'/0'/0'</span></div>
-          <div style="height:3mm;"></div>
-          <div class="xprv-text" id="xprv-text">zprvAfcFwXSMcdJZ8S7L2PwHaTaNbkugAi4yrnbkY7KeB7jnY245n35MSB1nxAbGXwdMXokUU1TKvkESwPwxBpqNMmrJEPeVn42VZEopVJ7QtC3</div>
-          <div style="height:1.5mm;"></div>
-          <div id="xprv-qr-code" class="xprv-qr-code"></div>
-          <div style="height:1.5mm;"></div>
-          <div class="half-field"><span class="label" style="width: revert;">BIP32 Extended Private Key</span></div>
-        </div>
-        <div class="back rotate180">
-          Copy from other box
-        </div>
-      </div>
     </section>
 
     <section class="sheet padding-10mm">
@@ -107,16 +93,19 @@
       <p>This is the cover for the laminated seed sheet. Cut it and fold it along the white lines and wrap the seed sheet inside.</p>
       <div class="backup-cover-text">
         <p>Backup Card</p>
-        <div class="wallet">Wallet name</div>
+        <div class="wallet">
+          <div>Wallet Name</div>
+          <div class="wallet-name" id="wallet-name-cover"></div>
+        </div>
         <p>Confidential</p>
         <p>keep this document safe</p>
       </div>
       <svg class="back-svg" viewBox="0 0 595.28 841.89" width="210mm" height="296.998mm" xmlns="http://www.w3.org/2000/svg">
         <g>
-          <g fill="#18002f" stroke="#FFFFFF" stroke-width="2.0" stroke-color-name="Cut">
+          <g fill="#18002f" stroke="#FFFFFF" stroke-width="2.0">
             <path id="envelope-cut-outside" d="M 247.98 600.44 L 282.34 645.53 L 467.27 645.53 A 2.83 2.83 0 0 0 470.0 643.45 L 519.09 465.15 L 484.73 420.06 L 533.4 243.26 A 2.83 2.83 0 0 0 530.67 239.67 L 347.3 239.67 L 312.94 194.58 L 128.01 194.58 A 2.83 2.83 0 0 0 125.27 196.66 L 76.19 374.96 L 110.55 420.06 L 61.87 596.85 A 2.83 2.83 0 0 0 64.61 600.44 L 247.98 600.44"/>
           </g>
-          <g fill="#18002f" stroke="#FFFFFF" stroke-width="0.75" stroke-color-name="Crease">
+          <g fill="#18002f" stroke="#FFFFFF" stroke-width="0.75">
             <path id="envelope-fold-inside" d="M 247.98 600.44 L 484.73 420.06 L 347.3 239.67 L 110.55 420.06 L 247.98 600.44"/>
           </g>
         </g>

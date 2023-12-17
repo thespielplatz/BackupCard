@@ -8,9 +8,15 @@ const loadingIndicator = document.getElementById('loading')
 const seedGrid = document.getElementById('seed-grid')
 const mnemonicInfo = document.getElementById('mnemonic-info')
 const mnemonicInput = document.getElementById('mnemonic-input')
+
+const walletNameInput = document.getElementById('wallet-name-input')
+const walletNameCard = document.getElementById('wallet-name-card')
+const walletNameCover = document.getElementById('wallet-name-cover')
+
 const acount0xpubField =document.getElementById('acount0xpub')
 const acount0zpubField =document.getElementById('acount0zpub')
-const zpubQRCode = new QRCode(document.getElementById('zpub-qrcode'), {
+const zubQRCodeContainer = document.getElementById('zpub-qrcode')
+const zpubQRCode = new QRCode(zubQRCodeContainer, {
   text: '',
   width: 400,
   height: 400,
@@ -22,7 +28,11 @@ const zpubQRCode = new QRCode(document.getElementById('zpub-qrcode'), {
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 const hide = (element) => {
-  element.className += 'hidden'
+  if (!element.className.includes('hidden')) {
+    const newClassNames = element.className.split(' ')
+    newClassNames.push('hidden')
+    element.className = newClassNames.join(' ')
+  }
 }
 
 const show = (element) => {
@@ -115,6 +125,11 @@ const mnemonicChanged = async (mnemonic) => {
 
   const valid = bip39lib.validateMnemonic(mnemonic)
   mnemonicInfo.innerText = `${valid ? '✅ Valid' : '🚨 Not Valid'} BIP39 Mnemonic`
+  if (valid) {
+    show(zubQRCodeContainer)
+  } else {
+    hide(zubQRCodeContainer)
+  }
 
   const words = valid ? mnemonic.split(' ') : []
 
@@ -189,6 +204,7 @@ const addAddressPage = () => {
 
 const EMPTY_STRING = ''
 let currentMnemonic = EMPTY_STRING
+
 mnemonicInput.addEventListener('keyup',  async () => {
   if (currentMnemonic !== EMPTY_STRING) {
     if (currentMnemonic === mnemonicInput.value) {
@@ -209,10 +225,16 @@ mnemonicInput.addEventListener('keyup',  async () => {
 
   currentMnemonic = EMPTY_STRING
 })
+
 document.getElementById('btnAddAddressPage').addEventListener('click', () => {
   show(loadingIndicator)
   addAddressPage()
   hide(loadingIndicator)
+})
+
+walletNameInput.addEventListener('keyup', () => {
+  walletNameCard.innerText = walletNameInput.value
+  walletNameCover.innerText = walletNameInput.value
 })
 
 hide(loadingIndicator)
