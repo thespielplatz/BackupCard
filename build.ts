@@ -19,7 +19,7 @@ inlineSource(htmlpath, {
   .then((html) => {
     // Do something with html
     checkAndCreateDirectory(path.resolve('./build'))
-    fs.writeFileSync(path.resolve('./build/index.html'), html)
+    fs.writeFileSync(path.resolve('./build/backup-card-offline.html'), html)
 console.log('Done')
   })
   .catch((err) => {
