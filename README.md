@@ -1,7 +1,6 @@
 # Backup Card Creator
 
-[![release][release-badge]][release]
-[![license][license-badge]][license]
+[![MIT License Badge](docs/img/license-badge.svg)](LICENSE)
 
 Creates from a mnemonic (BIP39) a printable sheets of:
 - backup card of the mnemonic for lamination
