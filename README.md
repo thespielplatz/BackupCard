@@ -4,7 +4,6 @@
 
 ### Backlog
 
-- [ ] Some build one file
 - [ ] Optional Passphrase
 - [ ] Toggle for either Seed or Account
 - 
@@ -16,6 +15,7 @@
 - [x] Backup Name on Envelope
 - [x] Loading indicater when stuff is calculated
 - [x] Add dynamic Backname Input field
+- [x] Some build one file
 
 ###  Docs & Hints
 

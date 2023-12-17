@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "http-server",
-    "build": "inline-source-cli --compress false --root ./ index.html"
+    "build": "npx ts-node build.ts"
   },
   "author": "",
   "license": "ISC",
