@@ -2,11 +2,14 @@
 
 [![MIT License Badge](docs/img/license-badge.svg)](LICENSE)
 
-Creates from a mnemonic (BIP39) a printable sheets of:
+Creates from a mnemonic (BIP39) printable sheets for:
 - backup card of the mnemonic for lamination
 - cover sheet for the backup card 
 - the zpub with QR code for account 0 `m/84'/0'/0'`
 - Sheet with 8 addresses (and a button to produce more)
+
+For a single page offline version either run `npm run build` or download the latest 
+`backup-card-offline.html` from the [releases](https://github.com/thespielplatz/BackupCard/releases).
 
 The idea is to use this in a safe environment: e.g. 
 - small linux loaded in RAM without hdd or pendrive, so no data is persisted
@@ -23,8 +26,7 @@ or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#
 
 ### Backlog
 
-- [ ] Optional Passphrase
-- [ ] Toggle for either Mnemonic, BIP32 ZPRV or account0 ZPRV
+- [ ] Add Optional Passphrase
 
 #### Done
 - [x] Page 1: SeedWords with foldable back (quasi "Recovery Words" und "Restore" von BitBox02 Back card template) fürs laminieren
@@ -35,6 +37,9 @@ or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#
 - [x] Loading indicater when stuff is calculated
 - [x] Add dynamic Backname Input field
 - [x] Some build one file
+
+#### Ideas
+- Toggle for either Mnemonic, BIP32 ZPRV or account0 ZPRV
 
 ###  Docs & Hints
 
@@ -47,7 +52,7 @@ python3 -m http.server 8000
 python -m http.server 8000
 ```
 
-#### Build Hints
+#### Dev Notes
 
 ```bash
 # Generate bitcoinjs-lib.js
