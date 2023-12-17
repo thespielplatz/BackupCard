@@ -1,12 +1,32 @@
+# Backup Card Creator
+
+[![release][release-badge]][release]
+[![license][license-badge]][license]
+
+Creates from a mnemonic (BIP39) a printable sheets of:
+- backup card of the mnemonic for lamination
+- cover sheet for the backup card 
+- the zpub with QR code for account 0 `m/84'/0'/0'`
+- Sheet with 8 addresses (and a button to produce more)
+
+The idea is to use this in a safe environment: e.g. 
+- small linux loaded in RAM without hdd or pendrive, so no data is persisted
+- computer without hdd and network hardware
+- USB Printer without network capabilities
+  - ... and please research, if the printer save the last printouts
+  - ... and please research, if "some time" power is enough to clear the printers memory
+- To produce a mnemonic seed in a secure environment you could use [Mnemonic Offline Tool](https://github.com/bitaps-com/mnemonic-offline-tool)
+or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#standalone-offline-version).
+
 ### Print sizes
-- Seed Sheet: 70mm x 95mm
-- Seed Sheet Laminated: 80mm x 105mm
+- Backup Card Sheet: `70mm` x `95mm`
+- Size inside of Cover sheet: `80mm` x `105mm`
 
 ### Backlog
 
 - [ ] Optional Passphrase
-- [ ] Toggle for either Seed or Account
-- 
+- [ ] Toggle for either Mnemonic, BIP32 ZPRV or account0 ZPRV
+
 #### Done
 - [x] Page 1: SeedWords with foldable back (quasi "Recovery Words" und "Restore" von BitBox02 Back card template) fürs laminieren
 - [x] Page 2: Foldable thingy like BitBox02 Backup Card, just that cutted and laminated Page 1 fits into this
@@ -19,9 +39,10 @@
 
 ###  Docs & Hints
 
-
-If you have a file:// cors problem --> use e.g. python as webserver
+If you have a file:// cors problem --> use 
 ```bash
+npm run dev
+# or
 python3 -m http.server 8000
 # or
 python -m http.server 8000
