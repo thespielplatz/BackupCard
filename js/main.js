@@ -13,6 +13,7 @@ const walletNameInput = document.getElementById('wallet-name-input')
 const walletNameCard = document.getElementById('wallet-name-card')
 const walletNameCover = document.getElementById('wallet-name-cover')
 
+const acountWalletNameField =document.getElementById('acountWalletName')
 const acount0xpubField =document.getElementById('acount0xpub')
 const acount0zpubField =document.getElementById('acount0zpub')
 const zubQRCodeContainer = document.getElementById('zpub-qrcode')
@@ -182,6 +183,8 @@ const addAddressPage = () => {
     if (i % ADDRESSES_PER_PAGE === 0) {
       const addressPage = createAddressPage()
       addressPage.getElementsByTagName('h1')[0].innerHTML = `Addresses from ${addressIndex} to ${addressIndex + ADDRESSES_PER_PAGE - 1}`
+      addressPage.getElementsByClassName('addressPageWalletName')[0].innerText = walletNameInput.value
+
       addressGrid = addressPage.getElementsByClassName('address-grid')[0]
     }
     const { bc1Address } = account2Address(account0Node, addressIndex)
@@ -235,6 +238,12 @@ document.getElementById('btnAddAddressPage').addEventListener('click', () => {
 walletNameInput.addEventListener('keyup', () => {
   walletNameCard.innerText = walletNameInput.value
   walletNameCover.innerText = walletNameInput.value
+  acountWalletNameField.innerText = walletNameInput.value
+
+  const list = document.getElementsByClassName('addressPageWalletName')
+  for (let i = 0; i < list.length; ++i) {
+    list[i].innerText = walletNameInput.value
+  }
 })
 
 hide(loadingIndicator)

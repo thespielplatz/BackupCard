@@ -2,8 +2,18 @@
     border: 2px solid #c7c7c7;
 }
 
+.address-info {
+    padding-top: 2mm;
+    font-family: monospace;
+}
+
+.address-info span {
+    font-size: 7pt;
+    word-break: break-all;
+}
+
 .address-grid {
-    padding-top: 5mm;
+    padding-top: 3mm;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 5mm;

@@ -28,7 +28,10 @@ or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#
 
 - [ ] Add Optional Passphrase
 
-#### Done
+#### Done Next Releas
+- [x] Add Wallet name on account0 page and address pages
+
+#### Done V1.1
 - [x] Page 1: SeedWords with foldable back (quasi "Recovery Words" und "Restore" von BitBox02 Back card template) fürs laminieren
 - [x] Page 2: Foldable thingy like BitBox02 Backup Card, just that cutted and laminated Page 1 fits into this
 - [x] Page 3: Acount 0 XPUB with QR Code and Joe Text
