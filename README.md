@@ -28,6 +28,7 @@ or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#
 
 - [ ] Add option for seed split
 - [ ] Refactor 2 two "projects": Add BIP32 encrypt. Page 2 encrypted Text
+- [ ] BIP32 decrypt script (example)
 - [ ] Add Optional Passphrase
 
 #### Done Next Releas
