@@ -12,7 +12,7 @@ For a single page offline version either run `npm run build` or download the lat
 `backup-card-offline.html` from the [releases](https://github.com/thespielplatz/BackupCard/releases).
 
 The idea is to use this in a safe environment: e.g. 
-- small linux loaded in RAM without hdd or pendrive, so no data is persisted
+- small linux loaded in RAM without hdd or pendrive, so no data is persisted see [Freezer](freezer/README.md)
 - computer without hdd and network hardware
 - USB Printer without network capabilities
   - ... and please research, if the printer save the last printouts
