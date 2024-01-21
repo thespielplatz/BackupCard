@@ -33,7 +33,9 @@ or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#
 - [ ] BIP32 decrypt script (example)
 - [ ] Add Optional Passphrase
 
-#### Done Next Releas
+#### Done Next Release
+
+#### Done V1.2
 - [x] Add Wallet name on account0 page and address pages
 - [x] Add Account generation
 
