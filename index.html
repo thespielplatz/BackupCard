@@ -43,6 +43,8 @@
         <textarea type="text" id="mnemonic-input" rows="8" cols="30" style="font-weight: bold;"></textarea>
       </div>
       <div id="mnemonic-info"></div>
+      <div>Active Account: <span id="active-account-info"></span></div>
+      <button type="button" id="btnAddAccountPage">Add Account Page</button>
       <button type="button" id="btnAddAddressPage">Add Address Page</button>
     </div>
 
@@ -112,30 +114,30 @@
       </svg>
     </section>
 
-    <section class="sheet padding-10mm">
+    <template id="template-account-sheet">
       <h1>Extended Public Key - Read Only Zugriff</h1>
       <p>The following data is not security-critical. However, it allows for the identification of all Bitcoin addresses associated with the wallet, determining the current balance of the wallet, and viewing all transactions conducted so far.</p>
       <p>The <i>Extended Public Key</i> can be used with compatible wallets to obtain a read-only live view of the wallet and to determine (new) addresses in case further deposits are to be made to this wallet.</p>
       <p>The <i>Extended Public Key</i> should, therefore, be kept <strong>confidential</strong>.</p>
-      <h2>Account 0 - Extended Public Key</h2>
-      <div class="tech-info"><strong>Wallet Name:</strong> <span id="acountWalletName"></span></div>
-      <div class="tech-info"><strong>Path:</strong> m/84'/0'/0'</div>
-      <div class="tech-info"><strong>XPUB:</strong> <span id="acount0xpub"></span></div>
-      <div class="tech-info"><strong>ZPUB:</strong> <span id="acount0zpub"></span></div>
-      <div id="zpub-qrcode"></div>
-    </section>
+      <h2>Account <span data-field="account"></span></spab> - Extended Public Key</h2>
+      <div class="tech-info"><strong>Wallet Name:</strong> <span class="backupName"></span></div>
+      <div class="tech-info"><strong>Path:</strong> <span class="accountPath"></span></div>
+      <div class="tech-info"><strong>XPUB:</strong> <span data-field="accountXpub"></span></div>
+      <div class="tech-info"><strong>ZPUB:</strong> <span data-field="accountZpub"></span></div>
+      <div data-field="zpub-qrcode"></div>
+    </template>
 
     <template id="template-address-sheet">
       <!-- <section class="sheet padding-10mm"> -->
         <h1></h1>
-        <div class="address-info"><strong>Wallet Name:</strong> <span class="addressPageWalletName"></span></div>
+        <div class="address-info"> <strong>Wallet Name:</strong> <span class="backupName"></span>  <strong>Wallet Path:</strong> <span data-field="walletPath"></span></div>
         <div class="address-grid">
         </div>
     </template>
 
     <template id="template-address-box">
       <div class="address-box">
-        <div class="address-title">Address Path <span>`m/84'/0'/0'/0/0`</span></div>
+        <div class="address-title">Address Path <span data-field="path"></span></div>
         <div class="address-qrcode"></div>
         <div class="address-bc1"></div>
       </div>

@@ -26,6 +26,8 @@ or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#
 
 ### Backlog
 
+- [ ] Add vue project for generation (development get easier)
+- [ ] Add unit tests for wallet & address generation
 - [ ] Add option for seed split
 - [ ] Refactor 2 two "projects": Add BIP32 encrypt. Page 2 encrypted Text
 - [ ] BIP32 decrypt script (example)
@@ -33,6 +35,7 @@ or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#
 
 #### Done Next Releas
 - [x] Add Wallet name on account0 page and address pages
+- [x] Add Account generation
 
 #### Done V1.1
 - [x] Page 1: SeedWords with foldable back (quasi "Recovery Words" und "Restore" von BitBox02 Back card template) fürs laminieren
@@ -52,6 +55,7 @@ or [Iancoleman BIP39](https://github.com/iancoleman/bip39/blob/master/readme.md#
 If you have a file:// cors problem --> use 
 ```bash
 npm run dev
+# Needs http-server installed
 # or
 python3 -m http.server 8000
 # or
