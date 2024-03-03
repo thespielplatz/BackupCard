@@ -2,8 +2,7 @@
 
 [![MIT License Badge](docs/img/license-badge.svg)](LICENSE)
 
-<img src="docs/img/01_closed.jpg" height="200">
-<img src="docs/img/02_open.jpg" height="200">
+<img src="docs/img/01_closed.jpg" height="200"><img src="docs/img/02_open.jpg" height="200">
 
 Creates from a mnemonic (BIP39) printable sheets for:
 - backup card of the mnemonic for lamination
