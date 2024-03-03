@@ -24,7 +24,7 @@ For a single page offline version either run `npm run build` or download the lat
 ### Print sizes
 - Backup Card Sheet: `70mm` x `95mm`
 - Size inside of Cover sheet: `80mm` x `105mm`
-- 
+
 > [!CAUTION]
 > This tool is designed to enhance the aesthetics of your backup seed cards for digital wallets, making them more visually appealing for printing. While it serves to facilitate a more organized and potentially more secure way to store your seed phrases, it's crucial to remember that you are still operating within a digital environment.
 >
